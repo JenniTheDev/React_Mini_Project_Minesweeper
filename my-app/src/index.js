@@ -9,6 +9,8 @@ class Game extends React.Component {
     Beginner: 10 mines, 8x8 board
     Intermediate: 20 mines, 12x12 board
     Expert: 40 mines, 16x16 board
+    Insane: 150 mines, 16x16 board
+    Impossible: 
     */
     state = {
         height: 8,
@@ -39,6 +41,20 @@ class Game extends React.Component {
                 mines: 40,
             });
         }
+        if (difficulty.value === "insane") {
+          this.setState({
+              height: 16,
+              width: 16,
+              mines: 150,
+          });
+      }
+      if (difficulty.value === "impossible") {
+        this.setState({
+            height: 16,
+            width: 16,
+            mines: 250,
+        });
+    }
     }
 
     render() {
@@ -59,6 +75,9 @@ class Game extends React.Component {
                             <option value="beginner"> Beginner </option>
                             <option value="intermediate"> Intermediate </option>
                             <option value="expert"> Expert </option>
+                            <option value="insane"> Insane </option>
+                            <option value="impossible"> Impossible </option>
+                            
                         </select>
                     </span>
                     
@@ -66,7 +85,7 @@ class Game extends React.Component {
                     
                 </div>
                 
-                   <div className="board">
+                  <div className="board">
                   <Board height={height} width={width} mines={mines} />
                   </div>
               
